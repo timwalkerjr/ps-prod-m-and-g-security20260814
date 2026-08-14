@@ -1,0 +1,35 @@
+---
+export interface Props {
+  title: string;
+  subtitle: string;
+  breadcrumb?: string;
+}
+
+const { title, subtitle, breadcrumb = title } = Astro.props;
+---
+
+<section
+  id="hero"
+  class="relative bg-dark-background py-[120px] md:py-[180px] flex flex-col items-center justify-center text-center overflow-hidden"
+>
+  <div class="absolute inset-0 bg-[linear-gradient(rgba(14,27,43,0.85),rgba(14,27,43,0.85)),radial-gradient(at_100%_0%,oklch(0.75_0.16_85/0.12),rgba(0,0,0,0)_55%)]"></div>
+  <div class="relative z-10 flex flex-col items-center justify-center text-center px-6">
+    <div class="flex items-center gap-2 mb-6 text-primary text-[12px] uppercase font-bold tracking-widest">
+      <span class="w-1.5 h-4 bg-primary"></span>
+      Security Services
+    </div>
+    <h1 class="text-dark-foreground text-[60px] leading-[60px] font-bold uppercase tracking-tight max-w-4xl">
+      {title}
+    </h1>
+    <p class="mt-6 text-dark-muted-foreground text-[16px] leading-[26px] max-w-2xl">
+      {subtitle}
+    </p>
+    <nav class="mt-8 text-dark-muted-foreground/70 text-[12px] uppercase tracking-wider font-bold flex items-center gap-2 flex-wrap justify-center">
+      <a href="/" class="hover:text-primary transition-colors">Home</a>
+      <span>/</span>
+      <a href="/security-services" class="hover:text-primary transition-colors">Security Services</a>
+      <span>/</span>
+      <span class="text-primary">{breadcrumb}</span>
+    </nav>
+  </div>
+</section>

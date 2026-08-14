@@ -1,0 +1,19 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import AboutHero from '@/components/about-this-site/AboutHero.astro';
+import MockupNotice from '@/components/about-this-site/MockupNotice.astro';
+import Reconstruction from '@/components/about-this-site/Reconstruction.astro';
+import FactualRecord from '@/components/about-this-site/FactualRecord.astro';
+import Accuracy from '@/components/about-this-site/Accuracy.astro';
+---
+
+<BaseLayout
+  title="About This Site — M&G Security"
+  description="A transparent record documenting how the M&G Security website was reconstructed, what factual information was preserved, and what sources informed the rebuild."
+>
+  <AboutHero />
+  <MockupNotice />
+  <Reconstruction />
+  <FactualRecord />
+  <Accuracy />
+</BaseLayout>

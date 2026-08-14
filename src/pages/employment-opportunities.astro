@@ -1,0 +1,19 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import EmploymentHero from '@/components/employment-opportunities/EmploymentHero.astro';
+import EEOStatement from '@/components/employment-opportunities/EEOStatement.astro';
+import ApplicationSteps from '@/components/employment-opportunities/ApplicationSteps.astro';
+import ApplicationForm from '@/components/employment-opportunities/ApplicationForm.astro';
+import QuestionsCallout from '@/components/employment-opportunities/QuestionsCallout.astro';
+---
+
+<BaseLayout
+  title="Employment Opportunities — M&G Security"
+  description="M&G Security is hiring qualified security guards and law enforcement professionals. Apply today — active and retired officers encouraged to apply. Call (484) 824-8631."
+>
+  <EmploymentHero />
+  <EEOStatement />
+  <ApplicationSteps />
+  <ApplicationForm />
+  <QuestionsCallout />
+</BaseLayout>

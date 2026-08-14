@@ -1,0 +1,41 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SportHero from '@/components/security-services/SportHero.astro';
+import ServiceContent from '@/components/security-services/ServiceContent.astro';
+import ServiceCTA from '@/components/security-services/ServiceCTA.astro';
+
+const paragraphs = [
+  "M&amp;G Security was founded for the purpose of providing security at sporting events for local high schools. The professional staff hired to provide security makes sure that everyone has a great time and stays safe.",
+  "M&amp;G Security has provided crowd control at football and basketball events for as many as 100 people to 10,000 people. Our goal is to make sure that you and your children stay safe.",
+  "School events present distinct security challenges — excited crowds, minors, alcohol and substance concerns, and the emotional intensity of rivalry games. Our team includes active and retired law enforcement officers who understand how to enforce rules firmly while maintaining the supportive, community-oriented atmosphere that makes school events special.",
+];
+
+const bullets = [
+  "Sporting event crowd management",
+  "Prom and graduation security",
+  "Parking lot and entryway control",
+  "Student conflict de-escalation",
+  "Coordination with school resource officers",
+  "Alcohol and substance screening",
+  "Parent and visitor verification",
+  "Post-event building sweep and lockdown",
+];
+---
+
+<BaseLayout
+  title="High School Event Security | M&G Security Berks County"
+  description="Professional security for high school events including proms, graduations, and sporting events across Berks County, PA. Founded by former law enforcement officers."
+>
+  <SportHero
+    title="High school event security"
+    subtitle="We'll keep your high school event safe"
+    breadcrumb="High school event security"
+  />
+  <ServiceContent
+    title="High school event security"
+    paragraphs={paragraphs}
+    bullets={bullets}
+    serviceShortName="high school event"
+  />
+  <ServiceCTA title="High school event security" />
+</BaseLayout>

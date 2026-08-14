@@ -1,0 +1,36 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ServiceDetailHero from '@/components/service-detail/ServiceDetailHero.astro';
+import ServiceDetailContent from '@/components/service-detail/ServiceDetailContent.astro';
+import ServicesCTA from '@/components/security-services/ServicesCTA.astro';
+
+const paragraphs = [
+  "M&G Security has provided on site security for major sports auctions for decades. We have stood watch over millions of dollars worth of merchandise of great sports legends such as Babe Ruth, Jackie Robinson, Roy Campanella, Mike Schmidt and many others.",
+  "Our professional staff has had the honor of standing guard for Donovan McNabb, Frank Robinson, Jim Rice and Hall of Fame Baseball Great Willie Mays.",
+  "Whether your auction features high-value memorabilia, estate collections, or commercial assets, M&G Security brings the same level of professionalism and vigilance. Our law enforcement-trained team manages crowd flow, secures merchandise, and protects both equipment and cash so your sale stays focused on the bids.",
+];
+
+const provides = [
+  'Traffic and crowd flow management',
+  'Asset and merchandise protection',
+  'Parking lot and load-out security',
+  'Bidder dispute de-escalation',
+  'Loading and unloading area oversight',
+  'Cash and payment point security',
+  'Perimeter and access control',
+  'Pre-event site assessment',
+];
+---
+
+<BaseLayout
+  title="Auction Security — M&G Security, Berks County PA"
+  description="M&G Security provides professional auction security in Berks County, PA — crowd control, asset protection and cash point security for public auctions."
+>
+  <ServiceDetailHero title="Auction security" subtitle="We'll keep your auction safe" />
+  <ServiceDetailContent
+    serviceName="auction security"
+    paragraphs={paragraphs}
+    provides={provides}
+  />
+  <ServicesCTA heading="Need Auction security?" />
+</BaseLayout>

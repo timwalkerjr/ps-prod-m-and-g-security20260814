@@ -1,0 +1,87 @@
+---
+export interface Props {
+  title: string;
+  paragraphs: string[];
+  bullets: string[];
+  serviceShortName: string;
+}
+
+const { title, paragraphs, bullets, serviceShortName } = Astro.props;
+---
+
+<section id="content" class="bg-background py-24 md:py-32">
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12">
+    <div class="lg:col-span-2">
+      <div class="mb-6 mx-auto lg:mx-0 w-6 h-0.5 bg-primary"></div>
+      <h2 class="text-foreground text-[36px] leading-[44px] font-bold uppercase tracking-tight mb-6">
+        {title}
+      </h2>
+      <div class="space-y-6 text-muted-foreground text-[16px] leading-[26px]">
+        {paragraphs.map((p) => (
+          <p set:html={p}></p>
+        ))}
+      </div>
+
+      <div class="mt-12">
+        <div class="w-6 h-0.5 bg-primary mb-4"></div>
+        <h3 class="text-foreground text-[18px] font-bold uppercase tracking-wide mb-6">
+          What M&amp;G Provides
+        </h3>
+        <ul class="space-y-3">
+          {bullets.map((b) => (
+            <li class="flex items-start gap-3 text-foreground text-[15px] leading-[24px]">
+              <i class="ri-shield-check-line text-primary text-lg mt-1 shrink-0"></i>
+              <span>{b}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <aside class="space-y-8">
+      <div class="bg-surface border border-gray-100 p-8 shadow-sm">
+        <div class="w-6 h-0.5 bg-primary mb-4"></div>
+        <h4 class="text-foreground text-[12px] font-bold uppercase tracking-widest mb-4">
+          Request This Service
+        </h4>
+        <p class="text-muted-foreground text-[14px] leading-relaxed mb-6">
+          Contact M&amp;G Security today for a tailored security assessment and quote for your {serviceShortName.toLowerCase()} security needs.
+        </p>
+        <div class="flex flex-col gap-3">
+          <a href="tel:+14848248631" class="bg-primary text-foreground font-bold uppercase tracking-wider text-[12px] px-6 py-3 rounded-none text-center hover:bg-primary-hover transition-colors flex items-center justify-center gap-2">
+            <i class="ri-phone-line"></i>
+            Call (484) 824-8631
+          </a>
+          <a href="/contact-us" class="border border-border text-foreground font-bold uppercase tracking-wider text-[12px] px-6 py-3 rounded-none text-center hover:bg-background transition-colors">
+            Request a Quote
+          </a>
+        </div>
+      </div>
+
+      <div class="bg-dark-background border border-dark-border p-8">
+        <div class="w-6 h-0.5 bg-primary mb-4"></div>
+        <h4 class="text-primary text-[10px] font-bold uppercase tracking-widest mb-6">
+          Why Choose M&amp;G
+        </h4>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3 text-dark-foreground text-[14px]">
+            <i class="ri-shield-star-line text-primary text-lg shrink-0"></i>
+            <span>Active &amp; retired law enforcement officers</span>
+          </li>
+          <li class="flex items-start gap-3 text-dark-foreground text-[14px]">
+            <i class="ri-shield-star-line text-primary text-lg shrink-0"></i>
+            <span>Founded in 1997 by a former police officer</span>
+          </li>
+          <li class="flex items-start gap-3 text-dark-foreground text-[14px]">
+            <i class="ri-shield-star-line text-primary text-lg shrink-0"></i>
+            <span>60+ years combined law enforcement experience</span>
+          </li>
+          <li class="flex items-start gap-3 text-dark-foreground text-[14px]">
+            <i class="ri-shield-star-line text-primary text-lg shrink-0"></i>
+            <span>24/7 availability for emergencies</span>
+          </li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>

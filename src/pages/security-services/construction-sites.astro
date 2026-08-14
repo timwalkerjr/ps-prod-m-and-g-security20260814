@@ -1,0 +1,39 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ServiceDetailHero from '@/components/service-detail/ServiceDetailHero.astro';
+import ServiceDetailContent from '@/components/service-detail/ServiceDetailContent.astro';
+import ServicesCTA from '@/components/security-services/ServicesCTA.astro';
+
+const paragraphs = [
+  "Our security guards are cross trained to provide you the best possible services. In today's environment, criminals are not only stealing heavy equipment but also precious metals. Theft of copper wire, equipment, tools and vandalism to job sites is why it is cost effective to hire M&G Security to protect your assets.",
+  "A single theft incident can cost a contractor thousands of dollars in lost equipment and project delays. Our guards maintain a visible presence that deters criminals, patrol the perimeter to spot unauthorized access, and document all activity so you have a clear record of site security.",
+  "M&G Security has protected construction sites for Monty's Construction and other contractors throughout Berks County. Our team understands the rhythms of construction work — we coordinate with site supervisors, respect active work zones, and adjust our patrol patterns to match your project schedule.",
+];
+
+const provides = [
+  'After-hours and overnight patrols',
+  'Equipment and material theft prevention',
+  'Vandalism and trespassing deterrence',
+  'Contractor and subcontractor access control',
+  'Fire watch and safety observation',
+  'Incident reporting and documentation',
+  'Perimeter fence and gate monitoring',
+  'Coordination with site supervisors',
+];
+---
+
+<BaseLayout
+  title="Construction Site Security — M&G Security, Berks County PA"
+  description="M&G Security protects construction sites across Berks County, PA from equipment theft and vandalism with after-hours patrols and access control."
+>
+  <ServiceDetailHero
+    title="Construction site security"
+    subtitle="We'll keep your construction site safe"
+  />
+  <ServiceDetailContent
+    serviceName="construction site security"
+    paragraphs={paragraphs}
+    provides={provides}
+  />
+  <ServicesCTA heading="Need Construction site security?" />
+</BaseLayout>

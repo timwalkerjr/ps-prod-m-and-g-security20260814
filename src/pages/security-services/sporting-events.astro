@@ -1,0 +1,41 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SportHero from '@/components/security-services/SportHero.astro';
+import ServiceContent from '@/components/security-services/ServiceContent.astro';
+import ServiceCTA from '@/components/security-services/ServiceCTA.astro';
+
+const paragraphs = [
+  "M&amp;G Security understands that your goal is not only to reduce risk and liability, but also to ensure that your guests enjoy their experience in the most secure environment possible. From high school tournaments and college games to professional arena events, we ensure that athletes can compete and fans can cheer in a safe, controlled environment.",
+  "Sporting events bring together passionate crowds, alcohol sales, rival fan bases, and high-value athletes and equipment — all in one venue. Our team plans security around the unique risks of each event, positioning guards at critical points, monitoring crowd behavior, and maintaining clear communication with venue management and local authorities.",
+  "We have provided security for the Reading Royals at the Santander Arena, high school playoff games, wrestling tournaments, and amateur sporting events across Berks County. Whether your event draws 200 or 20,000 spectators, M&amp;G Security scales its team and strategy to match.",
+];
+
+const bullets = [
+  "Player, coach, and team area protection",
+  "Spectator crowd control and section monitoring",
+  "Parking lot and traffic flow management",
+  "Concourse and concession security",
+  "Ticket gate and entry screening",
+  "Post-game crowd dispersal",
+  "VIP and press box security",
+  "Emergency medical and evacuation coordination",
+];
+---
+
+<BaseLayout
+  title="Sporting Event Security | M&G Security Berks County"
+  description="Professional security for sporting events across Berks County, PA. From high school tournaments to arena events, M&G Security keeps athletes, fans, and venues safe."
+>
+  <SportHero
+    title="Sporting event security"
+    subtitle="We'll keep your sporting event safe"
+    breadcrumb="Sporting event security"
+  />
+  <ServiceContent
+    title="Sporting event security"
+    paragraphs={paragraphs}
+    bullets={bullets}
+    serviceShortName="sporting event"
+  />
+  <ServiceCTA title="Sporting event security" />
+</BaseLayout>

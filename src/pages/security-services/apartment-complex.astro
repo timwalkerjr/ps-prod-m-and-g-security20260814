@@ -1,0 +1,39 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ServiceDetailHero from '@/components/service-detail/ServiceDetailHero.astro';
+import ServiceDetailContent from '@/components/service-detail/ServiceDetailContent.astro';
+import ServicesCTA from '@/components/security-services/ServicesCTA.astro';
+
+const paragraphs = [
+  "Let M&G Security help to improve the quality of life in your apartment complex. Our highly trained professionals walk the beat and get to know the residents, building trust and familiarity that turns a security presence into a genuine community asset.",
+  "A visible, approachable guard does more than deter crime — they spot maintenance issues early, assist residents with concerns, and create an environment where people feel safe coming home at any hour. Our team understands the balance between vigilance and hospitality that makes apartment living secure and welcoming.",
+  "Whether your property needs nightly patrols, weekend coverage, or a dedicated on-site presence, M&G Security tailors its services to your community's schedule and budget. We provide detailed activity logs and maintain open communication with property management so you always know what's happening on your grounds.",
+];
+
+const provides = [
+  '24/7 or scheduled shift coverage',
+  'Resident concern and complaint handling',
+  'Parking lot and garage patrols',
+  'Visitor and guest verification',
+  'Emergency response coordination',
+  'Lease enforcement support',
+  'Noise and disturbance mitigation',
+  'Detailed incident reporting',
+];
+---
+
+<BaseLayout
+  title="Apartment Complex Security — M&G Security, Berks County PA"
+  description="M&G Security provides professional apartment complex security in Berks County, PA. Trained guards handle resident concerns, patrols and 24/7 coverage."
+>
+  <ServiceDetailHero
+    title="Apartment complex security"
+    subtitle="We'll keep your apartment complex safe"
+  />
+  <ServiceDetailContent
+    serviceName="apartment complex security"
+    paragraphs={paragraphs}
+    provides={provides}
+  />
+  <ServicesCTA heading="Need Apartment complex security?" />
+</BaseLayout>

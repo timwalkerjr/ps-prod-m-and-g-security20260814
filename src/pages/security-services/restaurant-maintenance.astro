@@ -1,0 +1,41 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SportHero from '@/components/security-services/SportHero.astro';
+import ServiceContent from '@/components/security-services/ServiceContent.astro';
+import ServiceCTA from '@/components/security-services/ServiceCTA.astro';
+
+const paragraphs = [
+  "Several major restaurant Chains have contracted to M&amp;G Security to provide services after hours. When the dining room closes, we step in and provide a high quality of security service while routine maintenance is being provided.",
+  "Our personnel will work those late night hours so that management and staff can go home and relax knowing that their restaurant is in safe hands.",
+  "Overnight break-ins, vandalism, and theft of alcohol, equipment, and cash are persistent risks for hospitality businesses. Our guards provide visible deterrence, patrol interior and exterior spaces, monitor loading docks and delivery areas, and respond immediately to alarm activations or suspicious activity.",
+];
+
+const bullets = [
+  "Overnight and after-hours patrols",
+  "Maintenance period site security",
+  "Delivery and loading dock monitoring",
+  "Alcohol and inventory protection",
+  "Vandalism and break-in deterrence",
+  "Keyholder and alarm response",
+  "Contractor access control",
+  "Interior and exterior perimeter checks",
+];
+---
+
+<BaseLayout
+  title="Restaurant Maintenance Security | M&G Security Berks County"
+  description="Overnight and after-hours security for restaurants and hospitality venues across Berks County, PA. M&G Security protects your establishment during vulnerable hours."
+>
+  <SportHero
+    title="Restaurant maintenance security"
+    subtitle="We'll keep your restaurant safe after hours"
+    breadcrumb="Restaurant maintenance security"
+  />
+  <ServiceContent
+    title="Restaurant maintenance security"
+    paragraphs={paragraphs}
+    bullets={bullets}
+    serviceShortName="restaurant maintenance"
+  />
+  <ServiceCTA title="Restaurant maintenance security" />
+</BaseLayout>

@@ -1,0 +1,90 @@
+---
+export interface Props {
+  serviceName: string;
+  paragraphs: string[];
+  provides: string[];
+}
+
+const { serviceName, paragraphs, provides } = Astro.props;
+
+const whyChoose = [
+  'Active & retired law enforcement officers',
+  'Founded in 1997 by a former police officer',
+  '60+ years combined law enforcement experience',
+  '24/7 availability for emergencies',
+];
+---
+
+<section id="service-detail" class="bg-background py-24 md:py-32">
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 items-start">
+    <!-- Main content -->
+    <div class="lg:col-span-2">
+      <div class="space-y-6">
+        {
+          paragraphs.map((p) => (
+            <p class="text-[16px] leading-[28px] text-muted-foreground">{p}</p>
+          ))
+        }
+      </div>
+
+      <div class="mt-14 bg-surface border border-gray-100 p-8 rounded-none shadow-sm">
+        <div class="w-6 h-0.5 bg-primary mb-4"></div>
+        <h3 class="text-[18px] font-bold text-foreground uppercase tracking-wide mb-6">
+          What M&amp;G Provides
+        </h3>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+          {
+            provides.map((item) => (
+              <li class="flex items-start gap-3 text-[14px] leading-[22px] text-muted-foreground">
+                <i class="ri-shield-check-line text-primary text-base mt-0.5 shrink-0" aria-hidden="true" />
+                <span>{item}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="lg:sticky lg:top-28 flex flex-col gap-8">
+      <div class="bg-dark-background p-8 rounded-none">
+        <h4 class="text-primary text-[10px] uppercase font-bold tracking-widest mb-4">
+          Request This Service
+        </h4>
+        <p class="text-[14px] leading-relaxed text-dark-muted-foreground mb-6">
+          Contact M&amp;G Security today for a tailored security assessment and quote for your {serviceName.toLowerCase()} needs.
+        </p>
+        <div class="flex flex-col gap-3">
+          <a
+            href="tel:+14848248631"
+            class="bg-primary text-foreground font-bold uppercase tracking-wider text-[12px] px-6 py-3 rounded-none hover:bg-primary-hover transition-colors flex items-center justify-center gap-2"
+          >
+            <i class="ri-phone-line" aria-hidden="true"></i> Call (484) 824-8631
+          </a>
+          <a
+            href="/contact-us"
+            class="border border-dark-border text-dark-foreground font-bold uppercase tracking-wider text-[12px] px-6 py-3 rounded-none hover:bg-white/5 transition-colors flex items-center justify-center gap-2"
+          >
+            <i class="ri-mail-line" aria-hidden="true"></i> Request a Quote
+          </a>
+        </div>
+      </div>
+
+      <div class="bg-surface border border-gray-100 p-8 rounded-none shadow-sm">
+        <h4 class="text-primary text-[10px] uppercase font-bold tracking-widest mb-6">
+          Why Choose M&amp;G
+        </h4>
+        <ul class="flex flex-col gap-4">
+          {
+            whyChoose.map((item) => (
+              <li class="flex items-start gap-3 text-[14px] leading-[22px] text-muted-foreground">
+                <i class="ri-check-line text-primary text-base mt-0.5 shrink-0" aria-hidden="true" />
+                <span>{item}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>

@@ -1,0 +1,42 @@
+---
+export interface Props {
+  title: string;
+  subtitle: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<section id="service-hero" class="relative bg-dark-background overflow-hidden">
+  <div
+    class="absolute inset-0 pointer-events-none"
+    style="background: radial-gradient(at 100% 0%, oklch(0.75 0.16 85 / 0.12), rgba(0, 0, 0, 0) 55%);"
+  >
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-6 pt-[150px] pb-16 md:pt-[190px] md:pb-20">
+    <div class="flex items-center gap-2 mb-6">
+      <span class="w-1.5 h-4 bg-primary block"></span>
+      <span class="text-[12px] uppercase font-bold tracking-widest text-primary">Security Services</span>
+    </div>
+
+    <h1 class="text-[38px] leading-[42px] md:text-[60px] md:leading-[60px] font-bold uppercase tracking-tight text-dark-foreground max-w-[900px]">
+      {title}
+    </h1>
+
+    <p class="text-[16px] leading-[26px] text-dark-muted-foreground mt-6 max-w-[720px]">
+      {subtitle}
+    </p>
+
+    <nav
+      aria-label="Breadcrumb"
+      class="flex flex-wrap items-center gap-2 mt-10 pt-8 border-t border-dark-border/40 text-[11px] font-bold uppercase tracking-wider text-dark-muted-foreground"
+    >
+      <a href="/" class="hover:text-primary transition-colors">Home</a>
+      <span class="text-dark-muted-foreground/50">/</span>
+      <a href="/security-services" class="hover:text-primary transition-colors">Security Services</a>
+      <span class="text-dark-muted-foreground/50">/</span>
+      <span class="text-primary">{title}</span>
+    </nav>
+  </div>
+</section>
