@@ -2,18 +2,44 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import EmploymentHero from '@/components/employment-opportunities/EmploymentHero.astro';
 import EEOStatement from '@/components/employment-opportunities/EEOStatement.astro';
-import ApplicationSteps from '@/components/employment-opportunities/ApplicationSteps.astro';
-import ApplicationForm from '@/components/employment-opportunities/ApplicationForm.astro';
-import QuestionsCallout from '@/components/employment-opportunities/QuestionsCallout.astro';
+import { SITE } from '@/config/site';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": new URL('/employment-opportunities/', SITE.url).toString(),
+      "url": new URL('/employment-opportunities/', SITE.url).toString(),
+      "name": "Employment Opportunities — M&G Security",
+      "description": "M&G Security is hiring qualified security guards and law enforcement professionals. Apply today — active and retired officers encouraged to apply."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": SITE.url
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Employment Opportunities",
+          "item": new URL('/employment-opportunities/', SITE.url).toString()
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <BaseLayout
   title="Employment Opportunities — M&G Security"
-  description="M&G Security is hiring qualified security guards and law enforcement professionals. Apply today — active and retired officers encouraged to apply. Call (484) 824-8631."
+  description="M&G Security is hiring qualified security guards and law enforcement professionals. Apply today — active and retired officers encouraged to apply."
+  jsonLd={jsonLd}
 >
   <EmploymentHero />
   <EEOStatement />
-  <ApplicationSteps />
-  <ApplicationForm />
-  <QuestionsCallout />
 </BaseLayout>

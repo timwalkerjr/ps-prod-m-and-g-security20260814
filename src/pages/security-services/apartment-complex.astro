@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import ServiceDetailHero from '@/components/service-detail/ServiceDetailHero.astro';
 import ServiceDetailContent from '@/components/service-detail/ServiceDetailContent.astro';
 import ServicesCTA from '@/components/security-services/ServicesCTA.astro';
+import { SITE } from '@/config/site';
 
 const paragraphs = [
   "Let M&G Security help to improve the quality of life in your apartment complex. Our highly trained professionals walk the beat and get to know the residents, building trust and familiarity that turns a security presence into a genuine community asset.",
@@ -20,15 +21,72 @@ const provides = [
   'Noise and disturbance mitigation',
   'Detailed incident reporting',
 ];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "Apartment Complex Security",
+      "serviceType": "Apartment Complex Security & Patrol",
+      "description": "Professional 24/7 on-site security guards and patrol services for apartment complexes across Berks County, PA.",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": SITE.name,
+        "telephone": SITE.phone,
+        "email": SITE.email,
+        "url": SITE.url,
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": SITE.addressLines[0],
+          "addressLocality": "Wyomissing",
+          "addressRegion": "PA",
+          "postalCode": "19610",
+          "addressCountry": "US"
+        }
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "Berks County, PA"
+      },
+      "url": new URL('/security-services/apartment-complex/', SITE.url).toString()
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": SITE.url
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Security Services",
+          "item": new URL('/security-services/', SITE.url).toString()
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Apartment Complex Security",
+          "item": new URL('/security-services/apartment-complex/', SITE.url).toString()
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <BaseLayout
   title="Apartment Complex Security — M&G Security, Berks County PA"
   description="M&G Security provides professional apartment complex security in Berks County, PA. Trained guards handle resident concerns, patrols and 24/7 coverage."
+  jsonLd={jsonLd}
 >
   <ServiceDetailHero
     title="Apartment complex security"
     subtitle="We'll keep your apartment complex safe"
+    bgImage="https://images.pexels.com/photos/18153132/pexels-photo-18153132.jpeg?auto=compress&cs=tinysrgb&w=1200"
   />
   <ServiceDetailContent
     serviceName="apartment complex security"

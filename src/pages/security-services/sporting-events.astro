@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import SportHero from '@/components/security-services/SportHero.astro';
 import ServiceContent from '@/components/security-services/ServiceContent.astro';
 import ServiceCTA from '@/components/security-services/ServiceCTA.astro';
+import { SITE } from '@/config/site';
 
 const paragraphs = [
   "M&amp;G Security understands that your goal is not only to reduce risk and liability, but also to ensure that your guests enjoy their experience in the most secure environment possible. From high school tournaments and college games to professional arena events, we ensure that athletes can compete and fans can cheer in a safe, controlled environment.",
@@ -20,16 +21,73 @@ const bullets = [
   "VIP and press box security",
   "Emergency medical and evacuation coordination",
 ];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "Sporting Event Security",
+      "serviceType": "Stadium & Sporting Event Security",
+      "description": "Professional security for sporting events across Berks County, PA. From high school tournaments to arena events, M&G Security keeps athletes, fans, and venues safe.",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": SITE.name,
+        "telephone": SITE.phone,
+        "email": SITE.email,
+        "url": SITE.url,
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": SITE.addressLines[0],
+          "addressLocality": "Wyomissing",
+          "addressRegion": "PA",
+          "postalCode": "19610",
+          "addressCountry": "US"
+        }
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "Berks County, PA"
+      },
+      "url": new URL('/security-services/sporting-events/', SITE.url).toString()
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": SITE.url
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Security Services",
+          "item": new URL('/security-services/', SITE.url).toString()
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Sporting Event Security",
+          "item": new URL('/security-services/sporting-events/', SITE.url).toString()
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <BaseLayout
   title="Sporting Event Security | M&G Security Berks County"
   description="Professional security for sporting events across Berks County, PA. From high school tournaments to arena events, M&G Security keeps athletes, fans, and venues safe."
+  jsonLd={jsonLd}
 >
   <SportHero
     title="Sporting event security"
     subtitle="We'll keep your sporting event safe"
     breadcrumb="Sporting event security"
+    bgImage="https://images.pexels.com/photos/33826099/pexels-photo-33826099.jpeg?auto=compress&cs=tinysrgb&w=1200"
   />
   <ServiceContent
     title="Sporting event security"

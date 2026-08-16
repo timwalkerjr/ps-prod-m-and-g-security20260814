@@ -4,12 +4,12 @@ import { SITE } from '@/config/site';
 
 const navLinks = [
   { label: 'HOME', href: '/' },
-  { label: 'SECURITY SERVICES', href: '/security-services' },
-  { label: 'ABOUT US', href: '/about-us' },
-  { label: 'ARTICLES', href: '/articles' },
-  { label: 'PHOTO GALLERY', href: '/photo-gallery' },
-  { label: 'CONTACT US', href: '/contact-us' },
-  { label: 'EMPLOYMENT', href: '/employment-opportunities' },
+  { label: 'SECURITY SERVICES', href: '/security-services/' },
+  { label: 'ABOUT US', href: '/about-us/' },
+  { label: 'ARTICLES', href: '/articles/' },
+  { label: 'PHOTO GALLERY', href: '/photo-gallery/' },
+  { label: 'CONTACT US', href: '/contact-us/' },
+  { label: 'EMPLOYMENT', href: '/employment-opportunities/' },
 ];
 ---
 
@@ -21,8 +21,9 @@ const navLinks = [
           <img src={SITE.logoSrc} alt={SITE.name} class="w-[100px] md:w-[115px] h-[36px] md:h-[38px] object-contain" data-ps="src/components/Navigation.astro:d4d69v" />
         </a>
         <div class="h-6 w-px bg-dark-border hidden sm:block" data-ps="src/components/Navigation.astro:gqvsde"></div>
-        <a href="/" class="block" data-ps="src/components/Navigation.astro:partner-logo">
-          <img src={SITE.logoSrc} alt="Partner Logo" class="w-[100px] md:w-[115px] h-[36px] md:h-[38px] object-contain" data-ps="src/components/Navigation.astro:partner-img" />
+        <a href="https://www.kresecurity.com/" target="_blank" rel="noopener" class="flex items-center gap-2 hover:opacity-90 transition-opacity" data-ps="src/components/Navigation.astro:partner-logo">
+          <img src="https://pagesmith-cdn.com/f57c14f2/images/KRE-logo-2026-1024-1024.webp" alt="KRE Security LLC" class="h-[36px] md:h-[38px] w-auto object-contain shrink-0" data-ps="src/components/Navigation.astro:partner-img" />
+          <span class="text-[9px] md:text-[10px] text-dark-foreground/80 leading-tight max-w-[130px] font-sans" data-ps="src/components/Navigation.astro:i2om6i">Owned and Operated by KRE Securities, LLC</span>
         </a>
       </div>
 
@@ -38,13 +39,10 @@ const navLinks = [
           ))}
         </div>
         
-        <div class="flex items-center ml-3 xl:ml-6 gap-3 xl:gap-5 shrink-0" data-ps="src/components/Navigation.astro:actions">
-          <a href={SITE.phoneHref} class="hidden xl:flex text-dark-foreground text-[11px] font-bold items-center gap-1.5 hover:text-primary transition-colors whitespace-nowrap" data-ps="src/components/Navigation.astro:kd8n5v">
-            <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <div class="flex items-center ml-3 xl:ml-6 shrink-0" data-ps="src/components/Navigation.astro:actions">
+          <a href={SITE.phoneHref} class="hidden lg:flex text-dark-foreground text-[16px] xl:text-[17px] font-bold items-center gap-2 hover:text-primary transition-colors whitespace-nowrap" data-ps="src/components/Navigation.astro:kd8n5v">
+            <svg class="w-4.5 h-4.5 text-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             {SITE.phone}
-          </a>
-          <a href={SITE.ctaLink} class="bg-primary text-foreground text-[10.5px] xl:text-[11px] font-bold uppercase tracking-[0.1em] px-4 xl:px-5 py-2.5 rounded-none hover:bg-primary-hover transition-colors whitespace-nowrap" data-ps="src/components/Navigation.astro:kd8n5u">
-            GET A QUOTE
           </a>
         </div>
       </div>
@@ -66,11 +64,10 @@ const navLinks = [
         <a href={link.href} class="text-dark-foreground/90 font-bold py-3 text-[12px] uppercase tracking-wider hover:text-primary" data-ps={`src/components/Navigation.astro:kd8n5t-${__psIdx}`}>{link.label}</a>
       ))}
       <div class="pt-2 border-t border-dark-border/40 flex flex-col gap-3" data-ps="src/components/Navigation.astro:gqvsde">
-        <a href={SITE.phoneHref} class="text-dark-foreground text-[12px] font-bold flex items-center gap-2 hover:text-primary transition-colors py-2" data-ps="src/components/Navigation.astro:kd8n5r">
-          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <a href={SITE.phoneHref} class="text-dark-foreground text-[16px] font-bold flex items-center gap-2 hover:text-primary transition-colors py-2" data-ps="src/components/Navigation.astro:kd8n5r">
+          <svg class="w-4.5 h-4.5 text-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           {SITE.phone}
         </a>
-        <a href="/contact-us" class="bg-primary text-foreground text-[12px] font-bold uppercase tracking-wider px-6 py-3 rounded-none text-center" data-ps="src/components/Navigation.astro:kd8n5s">GET A QUOTE</a>
       </div>
     </nav>
   </div>

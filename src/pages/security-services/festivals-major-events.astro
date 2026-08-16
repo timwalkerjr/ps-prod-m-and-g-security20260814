@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import ServiceDetailHero from '@/components/service-detail/ServiceDetailHero.astro';
 import ServiceDetailContent from '@/components/service-detail/ServiceDetailContent.astro';
 import ServicesCTA from '@/components/security-services/ServicesCTA.astro';
+import { SITE } from '@/config/site';
 
 const paragraphs = [
   "M&G Security has provided on site security for Festivals and Major Events since 1997. We have stood watch and monitored the crowds at major events such as the Reading Liederkranz Oktoberfest, Reading Motorcycle Clubs Annual Anniversary Bash and the Wall that Heals to name a few. Providing both parking and crowd control. These events have hundreds to thousands of people coming and going.",
@@ -20,15 +21,72 @@ const provides = [
   'Parking and traffic coordination',
   'Stage and performance area security',
 ];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "Festival & Major Event Security",
+      "serviceType": "Festival & Large Event Security",
+      "description": "M&G Security provides festival and major event security in Berks County, PA since 1997 — crowd control, parking, and access point management.",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": SITE.name,
+        "telephone": SITE.phone,
+        "email": SITE.email,
+        "url": SITE.url,
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": SITE.addressLines[0],
+          "addressLocality": "Wyomissing",
+          "addressRegion": "PA",
+          "postalCode": "19610",
+          "addressCountry": "US"
+        }
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "Berks County, PA"
+      },
+      "url": new URL('/security-services/festivals-major-events/', SITE.url).toString()
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": SITE.url
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Security Services",
+          "item": new URL('/security-services/', SITE.url).toString()
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Festival & Major Event Security",
+          "item": new URL('/security-services/festivals-major-events/', SITE.url).toString()
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <BaseLayout
   title="Festival & Event Security — M&G Security, Berks County PA"
   description="M&G Security has provided festival and major event security in Berks County, PA since 1997 — crowd control, parking and access point management."
+  jsonLd={jsonLd}
 >
   <ServiceDetailHero
     title="Festival & event security"
     subtitle="We'll keep your festival or major event safe"
+    bgImage="https://images.pexels.com/photos/38626780/pexels-photo-38626780.jpeg?auto=compress&cs=tinysrgb&w=1200"
   />
   <ServiceDetailContent
     serviceName="festival & event security"

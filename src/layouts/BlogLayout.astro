@@ -15,6 +15,7 @@ const htmlLang = frontmatter.lang ?? Astro.currentLocale ?? SITE.lang;
 
 // Use ogImage if set, otherwise fall back to featured image
 const socialImage = frontmatter.ogImage || frontmatter.image;
+const heroBgImage = frontmatter.heroImage || frontmatter.image || frontmatter.ogImage || 'https://pagesmith-cdn.com/f57c14f2/images/modern-24-7-security-dispatch-and-operations-communication-c-ed715b22-1024.webp';
 
 // Build JSON-LD structured data based on schemaType or default to Article
 const schemaType = frontmatter.schemaType || 'Article';
@@ -136,11 +137,13 @@ if (schemaType === 'Recipe' && schemaData) {
 <html lang={htmlLang}>
   <head>
     <link rel="preconnect" href="https://pagesmith-cdn.com" crossorigin />
-    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="preload" href="/_pagesmith/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin />
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.1/fonts/remixicon.css" rel="stylesheet" />
     <SEOHead
-      title={`${frontmatter.title} – ${SITE.name}`}
+      title={
+        frontmatter.title?.includes(SITE.name) || frontmatter.title?.includes('M&G Security')
+          ? frontmatter.title
+          : `${frontmatter.title} – ${SITE.name}`
+      }
       description={frontmatter.description}
       image={socialImage}
       type="article"
@@ -156,10 +159,24 @@ if (schemaType === 'Recipe' && schemaData) {
     <!-- Hero Section (Matches Security Services Layout) -->
     <section
       id="hero"
-      class="relative bg-dark-background pt-[140px] pb-[70px] md:pt-[170px] md:pb-[90px] flex flex-col items-center justify-center text-center overflow-hidden"
+      class="relative bg-dark-background pt-[140px] pb-[60px] md:pt-[160px] md:pb-[80px] flex flex-col items-center justify-center text-center overflow-hidden"
       data-ps="src/layouts/BlogLayout.astro:hero"
     >
-      <div class="absolute inset-0 bg-[linear-gradient(rgba(14,27,43,0.88),rgba(14,27,43,0.88)),radial-gradient(at_100%_0%,oklch(0.75_0.16_85/0.15),rgba(0,0,0,0)_55%)] pointer-events-none" data-ps="src/layouts/BlogLayout.astro:ynx9gk"></div>
+      {heroBgImage && (
+        <div class="absolute inset-0 z-0" data-ps="src/layouts/BlogLayout.astro:hero-bg-image-wrapper">
+          <img
+            src={heroBgImage}
+            alt={frontmatter.imageAlt || frontmatter.title}
+            class="w-full h-full object-cover opacity-45"
+            loading="eager"
+            fetchpriority="high"
+            data-ps="src/layouts/BlogLayout.astro:hero-bg-image"
+          />
+          <div class="absolute inset-0 bg-dark-background/65" data-ps="src/layouts/BlogLayout.astro:o33ul6"></div>
+          <div class="absolute inset-0 bg-gradient-to-b from-dark-background/40 via-transparent to-dark-background" data-ps="src/layouts/BlogLayout.astro:o33ul5"></div>
+        </div>
+      )}
+      <div class="absolute inset-0 pointer-events-none z-0" style="background: radial-gradient(at 100% 0%, oklch(0.75 0.16 85 / 0.12), rgba(0, 0, 0, 0) 55%);" data-ps="src/layouts/BlogLayout.astro:ynx9gk"></div>
       <div class="relative z-10 max-w-5xl mx-auto px-6 flex flex-col items-center justify-center text-center" data-ps="src/layouts/BlogLayout.astro:ynx9gl">
         <div class="flex items-center gap-2 mb-5 text-primary text-[12px] uppercase font-bold tracking-widest" data-ps="src/layouts/BlogLayout.astro:eyebrow">
           <span class="w-1.5 h-4 bg-primary" data-ps="src/layouts/BlogLayout.astro:9v224h"></span>
@@ -184,7 +201,7 @@ if (schemaType === 'Recipe' && schemaData) {
         <nav class="text-[11px] uppercase tracking-wider font-bold text-muted-foreground flex items-center gap-2 flex-wrap" data-ps="src/layouts/BlogLayout.astro:breadcrumbs-nav">
           <a href="/" class="hover:text-primary transition-colors" data-ps="src/layouts/BlogLayout.astro:th3ncz">HOME</a>
           <span class="text-border" data-ps="src/layouts/BlogLayout.astro:9v224i">/</span>
-          <a href="/articles" class="hover:text-primary transition-colors" data-ps="src/layouts/BlogLayout.astro:th3nd0">ARTICLES</a>
+          <a href="/articles/" class="hover:text-primary transition-colors" data-ps="src/layouts/BlogLayout.astro:th3nd0">ARTICLES</a>
           <span class="text-border" data-ps="src/layouts/BlogLayout.astro:9v224j">/</span>
           <span class="text-foreground truncate max-w-md" data-ps="src/layouts/BlogLayout.astro:9v224k">{frontmatter.title}</span>
         </nav>
@@ -277,7 +294,7 @@ if (schemaType === 'Recipe' && schemaData) {
                   <i class="ri-phone-line" aria-hidden="true"></i> Call {SITE.phone}
                 </a>
                 <a
-                  href={frontmatter.ctaButtonLink || '/contact-us'}
+                  href={frontmatter.ctaButtonLink || '/contact-us/'}
                   class="border border-border text-foreground font-bold uppercase tracking-wider text-[12px] px-6 py-3.5 rounded-none hover:bg-background transition-colors flex items-center justify-center gap-2 text-center"
                  data-ps="src/layouts/BlogLayout.astro:th3nd2">
                   <i class="ri-mail-line" aria-hidden="true"></i> {frontmatter.ctaButtonText || 'Request a Quote'}
@@ -345,7 +362,7 @@ if (schemaType === 'Recipe' && schemaData) {
                 <i class="ri-phone-line" aria-hidden="true"></i> Call {SITE.phone}
               </a>
               <a
-                href="/contact-us"
+                href="/contact-us/"
                 class="border border-border text-foreground font-bold uppercase tracking-wider text-[12px] px-6 py-3.5 rounded-none hover:bg-background transition-colors flex items-center justify-center gap-2 text-center"
                 data-ps="src/layouts/BlogLayout.astro:sidebar-quote-btn"
               >
@@ -362,15 +379,15 @@ if (schemaType === 'Recipe' && schemaData) {
             <ul class="flex flex-col gap-4" data-ps="src/layouts/BlogLayout.astro:sidebar-why-list">
               <li class="flex items-start gap-3 text-[14px] leading-[22px] text-muted-foreground" data-ps="src/layouts/BlogLayout.astro:hmgf42">
                 <i class="ri-shield-check-line text-primary text-base mt-0.5 shrink-0" aria-hidden="true"></i>
-                <span data-ps="src/layouts/BlogLayout.astro:9v225d">Active & retired law enforcement officers</span>
+                <span data-ps="src/layouts/BlogLayout.astro:9v225d">KRE Security LLC. is bonded and insured to provide the services offered to our clients.</span>
               </li>
               <li class="flex items-start gap-3 text-[14px] leading-[22px] text-muted-foreground" data-ps="src/layouts/BlogLayout.astro:hmgf43">
                 <i class="ri-shield-check-line text-primary text-base mt-0.5 shrink-0" aria-hidden="true"></i>
-                <span data-ps="src/layouts/BlogLayout.astro:9v225e">Founded in 1997 by a former police officer</span>
+                <span data-ps="src/layouts/BlogLayout.astro:9v225e">KRE Security LLC. conducts every investigation ethically, morally, legally and with the highest degree of integrity.</span>
               </li>
               <li class="flex items-start gap-3 text-[14px] leading-[22px] text-muted-foreground" data-ps="src/layouts/BlogLayout.astro:hmgf44">
                 <i class="ri-shield-check-line text-primary text-base mt-0.5 shrink-0" aria-hidden="true"></i>
-                <span data-ps="src/layouts/BlogLayout.astro:9v225f">60+ years combined law enforcement experience</span>
+                <span data-ps="src/layouts/BlogLayout.astro:9v225f">KRE Security LLC. was founded in August of 1990 and recently acquired M&amp;G Security expanding our capabilities and footprint in PA.</span>
               </li>
               <li class="flex items-start gap-3 text-[14px] leading-[22px] text-muted-foreground" data-ps="src/layouts/BlogLayout.astro:hmgf45">
                 <i class="ri-shield-check-line text-primary text-base mt-0.5 shrink-0" aria-hidden="true"></i>
@@ -403,7 +420,7 @@ if (schemaType === 'Recipe' && schemaData) {
             <i class="ri-phone-line" aria-hidden="true"></i> Call {SITE.phone}
           </a>
           <a
-            href={frontmatter.ctaButtonLink || '/contact-us'}
+            href={frontmatter.ctaButtonLink || '/contact-us/'}
             class="border border-dark-foreground/30 text-dark-foreground font-bold uppercase tracking-wider text-[12px] px-8 py-4 rounded-none hover:bg-white/5 transition-colors flex items-center justify-center gap-2 whitespace-nowrap"
            data-ps="src/layouts/BlogLayout.astro:th3nd4">
             <i class="ri-mail-line" aria-hidden="true"></i> {frontmatter.ctaButtonText || 'Request a Quote'}

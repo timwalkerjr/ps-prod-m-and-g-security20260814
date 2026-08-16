@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import SportHero from '@/components/security-services/SportHero.astro';
 import ServiceContent from '@/components/security-services/ServiceContent.astro';
 import ServiceCTA from '@/components/security-services/ServiceCTA.astro';
+import { SITE } from '@/config/site';
 
 const paragraphs = [
   "M&amp;G Security was founded for the purpose of providing security at sporting events for local high schools. The professional staff hired to provide security makes sure that everyone has a great time and stays safe.",
@@ -20,16 +21,73 @@ const bullets = [
   "Parent and visitor verification",
   "Post-event building sweep and lockdown",
 ];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "High School Event Security",
+      "serviceType": "School & Academic Event Security",
+      "description": "Professional security for high school events including proms, graduations, and sporting events across Berks County, PA.",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": SITE.name,
+        "telephone": SITE.phone,
+        "email": SITE.email,
+        "url": SITE.url,
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": SITE.addressLines[0],
+          "addressLocality": "Wyomissing",
+          "addressRegion": "PA",
+          "postalCode": "19610",
+          "addressCountry": "US"
+        }
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "Berks County, PA"
+      },
+      "url": new URL('/security-services/high-school-events/', SITE.url).toString()
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": SITE.url
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Security Services",
+          "item": new URL('/security-services/', SITE.url).toString()
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "High School Event Security",
+          "item": new URL('/security-services/high-school-events/', SITE.url).toString()
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <BaseLayout
   title="High School Event Security | M&G Security Berks County"
-  description="Professional security for high school events including proms, graduations, and sporting events across Berks County, PA. Founded by former law enforcement officers."
+  description="Professional security for high school events including proms, graduations, and sporting events across Berks County, PA. Locally owned and operated."
+  jsonLd={jsonLd}
 >
   <SportHero
     title="High school event security"
     subtitle="We'll keep your high school event safe"
     breadcrumb="High school event security"
+    bgImage="https://images.pexels.com/photos/13345835/pexels-photo-13345835.jpeg?auto=compress&cs=tinysrgb&w=1200"
   />
   <ServiceContent
     title="High school event security"

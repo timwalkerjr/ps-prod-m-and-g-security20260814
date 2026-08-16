@@ -22,12 +22,23 @@ const jsonLd = {
 
 <BaseLayout title="Security Insights & Articles" description="Professional security insights, industry updates, and safety tips from M & G Security." jsonLd={jsonLd}>
   <!-- Hero -->
-  <section class="bg-dark-background text-dark-muted-foreground py-[120px] md:py-[160px] relative overflow-hidden" data-ps="src/pages/articles.astro:k6g63m">
+  <section class="bg-dark-background text-dark-muted-foreground pt-[140px] pb-[60px] md:pt-[160px] md:pb-[80px] relative overflow-hidden" data-ps="src/pages/articles.astro:k6g63m">
+    <!-- Background Image with Dark Overlay -->
+    <div class="absolute inset-0 z-0" data-ps="src/pages/articles.astro:rtwn7z">
+      <img 
+        src="https://pagesmith-cdn.com/f57c14f2/images/modern-24-7-security-dispatch-and-operations-communication-c-ed715b22-1024.webp" 
+        alt="Security Insights and Articles" 
+        class="w-full h-full object-cover opacity-25" 
+        loading="eager"
+        fetchpriority="high" data-ps="src/pages/articles.astro:21cbfa" />
+      <div class="absolute inset-0 bg-dark-background/80" data-ps="src/pages/articles.astro:rtwn80"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-dark-background/30 via-transparent to-dark-background" data-ps="src/pages/articles.astro:rtwn81"></div>
+    </div>
     <div
-      class="absolute inset-0 pointer-events-none"
+      class="absolute inset-0 pointer-events-none z-0"
       style="background: radial-gradient(at 100% 0%, oklch(0.75 0.16 85 / 0.12), rgba(0, 0, 0, 0) 55%);"
      data-ps="src/pages/articles.astro:rtwn7w"></div>
-    <div class="max-w-5xl mx-auto px-6 flex flex-col items-center text-center relative" data-ps="src/pages/articles.astro:rtwn7x">
+    <div class="max-w-5xl mx-auto px-6 flex flex-col items-center text-center relative z-10" data-ps="src/pages/articles.astro:rtwn7x">
       <div class="flex items-center gap-2 mb-6" data-ps="src/pages/articles.astro:rtwn7y">
         <span class="w-1.5 h-4 bg-primary" data-ps="src/pages/articles.astro:rc6ay7"></span>
         <span class="text-[12px] uppercase font-bold tracking-widest text-primary" data-ps="src/pages/articles.astro:rc6ay6">Resources</span>
@@ -63,7 +74,7 @@ const jsonLd = {
               </div>
               
               <h2 class="text-[24px] leading-[32px] font-bold uppercase tracking-tight mb-4" data-ps={`src/pages/articles.astro:7vl20-${__psIdx}`}>
-                <a href={`/blog/${post.id}`} class="hover:text-primary transition-colors" data-ps={`src/pages/articles.astro:mvnpef-${__psIdx}`}>
+                <a href={`/blog/${post.id}/`} class="hover:text-primary transition-colors" data-ps={`src/pages/articles.astro:mvnpef-${__psIdx}`}>
                   {post.data.title}
                 </a>
               </h2>
@@ -73,7 +84,7 @@ const jsonLd = {
               </p>
               
               <a 
-                href={`/blog/${post.id}`} 
+                href={`/blog/${post.id}/`} 
                 class="text-[12px] font-bold uppercase tracking-[0.2em] text-foreground flex items-center gap-2 group hover:text-primary transition-colors"
                data-ps={`src/pages/articles.astro:mvnpeg-${__psIdx}`}>
                 Read Article

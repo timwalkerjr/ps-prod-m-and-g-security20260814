@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import './fonts.css';
+@import './icons.css';
 @plugin "@tailwindcss/typography";
 
 :root {
